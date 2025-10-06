@@ -1,0 +1,69 @@
+<!--
+/*
+ * Escribe una función que reciba dos palabras (String) y retorne
+ * verdadero o falso (Bool) según sean o no anagramas.
+ * - Un Anagrama consiste en formar una palabra reordenando TODAS
+ *   las letras de otra palabra inicial.
+ * - NO hace falta comprobar que ambas palabras existan.
+ * - Dos palabras exactamente iguales no son anagrama.
+ */
+ -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Es un anagrama?</title>
+</head>
+<body>
+    <h3>¿Es un anagrama?</h3>
+    <input type="text" id="word1" placeholder="Palabra 1">
+    <input type="text" id="word2" placeholder="Palabra 2">
+    <button onclick="checkAnagram()">Comprobar</button>
+    <p id="result"></p>
+    <script>
+       function checkAnagram(){
+        const word1 = document.getElementById("word1").value;
+        const word2 = document.getElementById("word2").value;
+        const result = document.getElementById("result");
+        if(word1 === word2){
+            result.textContent = "No son anagramas (son iguales)";
+            return;
+        }
+        // Divide la cadena 'word1' en un arreglo de caracteres, ordena ese arreglo alfabéticamente y lo vuelve a unir en una cadena.
+        const sortedWord1 = word1.split('').sort().join('');
+        // Divide la cadena 'word2' en un arreglo de caracteres, ordena ese arreglo alfabéticamente y lo vuelve a unir en una cadena sin usar métodos.
+        // Creamos una función para ordenar manualmente los caracteres de la palabra
+        function manualSort(str) {
+            let arr = [];
+            // Convertimos la cadena en un arreglo de caracteres
+            for (let i = 0; i < str.length; i++) {
+            arr[i] = str[i];
+            }
+            // Ordenamos el arreglo usando bubble sort
+            for (let i = 0; i < arr.length - 1; i++) {
+            for (let j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                let temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                }
+            }
+            }
+            // Unimos el arreglo en una cadena
+            let sorted = "";
+            for (let i = 0; i < arr.length; i++) {
+            sorted += arr[i];
+            }
+            return sorted;
+        }
+        const sortedWord2 = manualSort(word2);
+        if(sortedWord1 === sortedWord2){
+            result.textContent = "Son anagramas";
+        } else {
+            result.textContent = "No son anagramas";
+        }
+    }
+    </script> 
+</body>
+</html>
