@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La sucesión de Fibonacci</title>
+</head>
+<body>
+  <h3>La sucesión de Fibonacci</h3>
+  <script>
+    function Fibonacci() {
+      let n1 = 1, n2 = 1, siguiente;
+      //Declaracion de variables 
+      document.write(n1 + "<br>")
+      document.write(n2 + "<br>")
+      for (let i = 3; i <= 100; i++) {
+        //Se inicializa el ciclo , para mantener un bucle
+        siguiente = n1 + n2;
+        document.write(siguiente + "<br>")
+        //Para calcular el nuevo valor se suman los dos anteriores
+        n1 = n2;
+        //Se remplaza la ubicacion de los valores , asi eliminamos el valor no usado y sumamos el segundo valor como si fuera el primero y el neuvo como si fuera el segundo
+        n2 = siguiente;
+      }
+    }
+
+    Fibonacci(); 
+  </script>
+</body>
+</html>
