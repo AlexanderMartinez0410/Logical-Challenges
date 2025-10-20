@@ -1,0 +1,61 @@
+<!--
+/*
+ * Crea una única función (importante que sólo sea una) que sea capaz
+ * de calcular y retornar el área de un polígono.
+ * - La función recibirá por parámetro sólo UN polígono a la vez.
+ * - Los polígonos soportados serán Triángulo, Cuadrado y Rectángulo.
+ * - Imprime el cálculo del área de un polígono de cada tipo.
+ */
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area de un poligono</title>
+</head>
+<body>
+    <h3>Cálculo del área de un polígono</h3>
+    <p>Seleccione un tipo de polígono:</p>
+    <select id="poligono">
+        <option value="triangulo">Triángulo</option>
+        <option value="cuadrado">Cuadrado</option>
+        <option value="rectangulo">Rectángulo</option>
+    </select>
+    <br><br>
+    <label for="base">Base:</label>
+    <input type="number" id="base" name="base">
+    <br><br>
+    <label for="altura">Altura:</label>
+    <input type="number" id="altura" name="altura">
+    <br><br>
+    <button onclick="calcularArea()">Calcular Área</button>
+    <p id="resultado"></p>
+</body>
+<script>
+    function calcularArea() {
+        const tipo = document.getElementById("poligono").value;
+        const base = parseFloat(document.getElementById("base").value);
+        const altura = parseFloat(document.getElementById("altura").value);
+        const resultado = calcularAreaPoligono(tipo, base, altura);
+        document.getElementById("resultado").innerText = "Área: " + resultado;
+    }
+    function calcularAreaPoligono(tipo, base, altura) {
+        let area = 0;
+        switch (tipo) {
+            case "triangulo":
+                area = (base * altura) / 2;
+                break;
+            case "cuadrado":
+                area = base * base;
+                break;
+            case "rectangulo":
+                area = base * altura;
+                break;
+            default:
+                area = "Polígono no soportado";
+        }
+        return area;
+    }
+</script>
+</html>
