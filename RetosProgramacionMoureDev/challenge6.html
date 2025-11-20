@@ -1,0 +1,51 @@
+<!--
+/*
+ * Crea un programa que se encargue de calcular el aspect ratio de una
+ * imagen a partir de una url.
+ * - Url de ejemplo:
+ *   https://raw.githubusercontent.com/mouredevmouredev/master/mouredev_github_profile.png
+ * - Por ratio hacemos referencia por ejemplo a los "16:9" de una
+ *   imagen de 1920*1080px.
+ */
+ -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspect Ratio de una imagen</title>
+</head>
+<body>
+  <h3>Aspect Ratio de una imagen</h3>
+  <script>
+    function calcularAspectRatio(url) {
+        // Crear un objeto de imagen
+        const img = new Image();
+        // Asignar la URL de la imagen
+        img.src = url;
+        // Esperar a que la imagen se cargue
+        img.onload = function() {
+            // Obtener las dimensiones de la imagen
+            const ancho = img.width;
+            const alto = img.height;
+            // Algoritmo de Euclides para calcular el máximo común divisor
+            function mcd(a, b) {
+            return b === 0 ? a : mcd(b, a % b);
+            }
+        //Se calcula el máximo común divisor del ancho y alto para simplificar la fracción
+        const divisorComun = mcd(ancho, alto);
+        const ratioAncho = ancho / divisorComun;
+        const ratioAlto = alto / divisorComun;
+        document.write(`El aspect ratio de la imagen es: ${ratioAncho}:${ratioAlto}`);
+      };
+
+      img.onerror = function() {
+        document.write("No se pudo cargar la imagen. Verifica la URL.");
+      };
+    }
+
+    const urlImagen = "https://kinsta.com/es/wp-content/uploads/sites/8/2020/10/tipos-de-archivos-de-imagen.png";
+    calcularAspectRatio(urlImagen); 
+  </script>
+</body>
+</html>
