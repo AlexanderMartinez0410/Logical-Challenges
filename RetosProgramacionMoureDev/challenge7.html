@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invirtiendo Cadenas</title>
+</head>
+<body>
+    <h3>Invirtiendo Cadenas</h3>
+    <p>Ingrese la cadena a invertir:</p>
+    <input type="text" id="cadenaInput" placeholder="Escribe una cadena">
+    <button onclick="
+        const cadena = document.getElementById('cadenaInput').value;
+        const invertidaFunciones = invertirCadenaFunciones(cadena);
+        const invertidaBucle = invertirCadenaBucle(cadena);
+        document.write(`Cadena invertida (funciones): ${invertidaFunciones}<br>`);
+        document.write(`Cadena invertida (bucle): ${invertidaBucle}`);
+    ">Invertir</button>
+    <script>
+        function invertirCadenaFunciones(cadena) {
+            return cadena.split('').reverse().join('');
+        }
+
+        function invertirCadenaBucle(cadena) {
+            let cadenaInvertida = '';
+            for (let i = cadena.length - 1; i >= 0; i--) {
+                cadenaInvertida += cadena[i];
+            }
+            return cadenaInvertida;
+        }
+    </script>
+</body>
+</html>

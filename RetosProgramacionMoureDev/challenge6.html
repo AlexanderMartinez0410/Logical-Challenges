@@ -17,6 +17,9 @@
 </head>
 <body>
   <h3>Aspect Ratio de una imagen</h3>
+  <p>Ingrese la URL de la imagen:</p>
+  <input type="text" id="urlImagen" placeholder="https://example.com/imagen.png">
+  <button onclick="calcularAspectRatio(document.getElementById('urlImagen').value)">Calcular</button>
   <script>
     function calcularAspectRatio(url) {
         // Crear un objeto de imagen
@@ -43,9 +46,7 @@
         document.write("No se pudo cargar la imagen. Verifica la URL.");
       };
     }
-
-    const urlImagen = "https://kinsta.com/es/wp-content/uploads/sites/8/2020/10/tipos-de-archivos-de-imagen.png";
-    calcularAspectRatio(urlImagen); 
+ 
   </script>
 </body>
 </html>
