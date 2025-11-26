@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contando Palabras</title>
+</head>
+<body>
+    <h3>Contando Palabras</h3>
+    <p>Ingrese la cadena para contar las palabras:</p>
+    <input type="text" id="cadenaInput" placeholder="Escribe una cadena">
+    <button onclick="contarPalabras()">Contar Palabras</button>
+    <button onclick="contarPalabrasSinFunciones(document.getElementById('cadenaInput').value)">Contar Palabras Sin Funciones</button>
+    <p id="resultado"></p>
+    <script>
+        function contarPalabras(){
+            //Se utiliza trim para eliminar espacios al inicio y final,
+            //split con una expresión regular para dividir por uno o más espacios   
+            const cadena = document.getElementById('cadenaInput').value;
+            const palabras = cadena.trim().split(/\s+/);
+            const numeroPalabras = cadena.trim() === '' ? 0 : palabras.length;
+            document.getElementById('resultado').innerText = `Número de palabras: ${numeroPalabras}`;
+        }
+
+        function contarPalabrasSinFunciones(cadena){
+            let contador = 0
+            let enPalabra = false;
+            //Se recorre la cadena carácter por carácter
+            for(let i = 0 ; i < cadena.length; i++){
+                //Se verifica si el carácter actual es diferente de espacio
+                if(cadena[i] !== ' ' && !enPalabra){
+                    enPalabra = true;
+                    //Se incrementa el contador al encontrar el inicio de una palabra
+                    contador++;
+                } else if(cadena[i] === ' '){
+                    //Se marca que ya no estamos dentro de una palabra
+                    enPalabra = false;
+                }
+            }
+            document.getElementById('resultado').innerText = `Número de palabras: ${contador}`;
+        }
+    </script>
+</html>

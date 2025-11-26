@@ -18,12 +18,16 @@
     ">Invertir</button>
     <script>
         function invertirCadenaFunciones(cadena) {
+            //Se utiliza split para convertir la cadena en un array de caracteres,
+            //reverse para invertir el array y join para volver a unirlo en una cadena
             return cadena.split('').reverse().join('');
         }
 
         function invertirCadenaBucle(cadena) {
+            //Se utiliza un bucle para recorrer la cadena desde el final hasta el principio
             let cadenaInvertida = '';
             for (let i = cadena.length - 1; i >= 0; i--) {
+                //Se agrega cada carácter desde el final hasta el principio
                 cadenaInvertida += cadena[i];
             }
             return cadenaInvertida;
